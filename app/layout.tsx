@@ -17,23 +17,26 @@ export const metadata: Metadata = {
 
 export function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<React.PropsWithChildren<Record<never, never>>>): JSX.Element {
   return (
-    <ClerkProvider appearance={{
-      variables: {
-        colorPrimary: "#624cf5"
-      } as const
-    }}>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#624cf5" as const,
+        },
+      }}
+    >
       <html lang="en">
-        <body className={cn(
-          "bg-slate-50 dark:bg-slate-900 font-IBMPlex antialiased",
-          IBMPlex.variable
-        ) as string | undefined} >
+        <body
+          className={cn(
+            "bg-slate-50 dark:bg-slate-900 font-IBMPlex antialiased",
+            IBMPlex.variable
+          ) as string | undefined}
+        >
           {children}
         </body>
       </html>
     </ClerkProvider>
   );
 }
+
