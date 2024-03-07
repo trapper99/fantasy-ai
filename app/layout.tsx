@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "AI-powered image generator",
 };
 
-export default function RootLayout({
+export function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -24,10 +24,13 @@ export default function RootLayout({
     <ClerkProvider appearance={{
       variables: {
         colorPrimary: "#624cf5"
-      }
+      } as const
     }}>
-       <html lang="en">
-        <body className={cn("bg-slate-50 dark:bg-slate-900 font-IBMPlex antialiased", IBMPlex.variable)} >
+      <html lang="en">
+        <body className={cn(
+          "bg-slate-50 dark:bg-slate-900 font-IBMPlex antialiased",
+          IBMPlex.variable
+        ) as string | undefined} >
           {children}
         </body>
       </html>
